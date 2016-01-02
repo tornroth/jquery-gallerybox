@@ -1,0 +1,19 @@
+{
+  "name": "jquery-gallerybox",
+  "version": "0.0.1",
+  "description":"jQuery plugin to show a gallery in a lightbox.",
+  "main": "jquery.gallerybox.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rcus/jquery-gallerybox.git"
+  },
+  "keywords": [
+    "jquery-plugin",
+    "ecosystem:jquery",
+    "images",
+    "gallery",
+    "lightbox"
+  ],
+  "author": "Marcus Törnroth",
+  "license": "MIT"
+}
