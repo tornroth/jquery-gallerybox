@@ -1,0 +1,155 @@
+@import url(https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700);
+body {
+  margin: 0;
+  background-color: #eee;
+  font-family: sans-serif;
+}
+a, a:visited {
+  text-decoration: none;
+  color: #333;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+
+/* COLORS */
+.red   { background-color: #F44336; }
+.amber { background-color: #FFC107; }
+.green { background-color: #4CAF50; }
+.teal  { background-color: #009688; }
+
+
+/* HEADER */
+header {
+  position: fixed;
+  display: -webkit-flex;
+  display: flex;
+  top: 0;
+  left: 0;
+  width: 100%;
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 124px;
+  text-transform: uppercase;
+  background-color: #000;
+  -webkit-transition: all .3s linear;
+          transition: all .3s linear;
+}
+header.minimized {
+  background-color: rgba(0, 0, 0, 0.7);
+  line-height: 68px;
+}
+header div {
+  flex: 1 auto;
+  font-size: 56px;
+  -webkit-transition: font-size .3s linear;
+          transition: font-size .3s linear;
+}
+header.minimized div {
+  font-size: inherit;
+}
+header span {
+  font-size: 36px;
+}
+header a {
+  display: inline-block;
+  margin: 0;
+  padding: 0 18px;
+  color: #eee;
+}
+header a:hover {
+  text-decoration: none;
+}
+header div a {
+  width: 100%;
+}
+nav {
+  display: -webkit-flex;
+  display: flex;
+}
+nav a {
+  background-image: -webkit-gradient(radial,50% 50%,0,50% 50%,70,from(rgba(255,255,255,0.2)),to(rgba(255,255,255,0.0)));
+  background-image: -moz-radial-gradient(50% 50% 90deg,ellipse closest-side,rgba(255,255,255,0.2) 0,rgba(255,255,255,0.0) 100%);
+}
+
+
+/* CONTENT */
+header + section {
+  padding-top: 124px;
+}
+section {
+  display: -webkit-flex;
+  display: flex;
+  padding-top: 68px;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+p {
+  -webkit-margin-after: 0;
+}
+.wrapper {
+  margin: 1em auto;
+  width: 860px;
+  max-width: 95%;
+}
+h1, h2, h3, thead {
+  font-family: 'PT Sans Narrow', sans-serif;
+}
+h1 {
+  font-size: 36px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+code {
+  display: block;
+  margin: 0.5em 0;
+  padding: 0.5em;
+  white-space: pre;
+  background-color: rgba(181, 181, 181, 0.7);
+  border-radius: 2px;
+}
+p > code {
+  display: initial;
+  padding: 0.2em;
+}
+
+
+/* START-VIEW */
+#start .wrapper {
+  margin: auto;
+  text-align: center;
+}
+.thumbnail {
+  max-width: 150px;
+  max-height: 100px;
+}
+
+/* Table */
+table {
+  width: 100%;
+  margin-top: 2em;
+  border-collapse: collapse;
+}
+table th {
+  padding: 0.5em;
+  text-align: left;
+}
+table td {
+  margin: 0;
+  padding: 0.5em;
+  border: 1px solid #333;
+}
+table td:not(:last-child) {
+  vertical-align: top;
+  font-family: monospace;
+}
+table td:last-child {
+  font-size: 14px;
+}
+
+/* Unordered list */
+ul li {
+  padding: 0.3em 0;
+}

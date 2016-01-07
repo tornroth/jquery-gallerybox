@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gallerybox</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="jquery-gallerybox/gallerybox.css">
+  </head>
+  <body>
+    <header>
+      <div>
+        <a href="#start">G<span>allerybox</span></a>
+      </div>
+      <nav>
+        <a href="#part1" class="amber">Set up</a>
+        <a href="#part2" class="green">Usage</a>
+        <a href="#part3" class="teal">Settings</a>
+        <a href="#part4" class="red">About</a>
+      </nav>
+    </header>
+      <section class="red" id="start">
+        <div class="wrapper">
+          <img src="img/01.jpg" class="thumbnail gallerybox">
+          <img src="img/02.jpg" class="thumbnail gallerybox">
+          <img src="img/03.jpg" class="thumbnail gallerybox">
+          <img src="img/04.jpg" class="thumbnail gallerybox">
+          <img src="img/05.jpg" class="thumbnail gallerybox"><br>
+          <img src="img/06.jpg" class="thumbnail gallerybox">
+          <img src="img/07.jpg" class="thumbnail gallerybox">
+          <img src="img/08.jpg" class="thumbnail gallerybox">
+          <img src="img/09.jpg" class="thumbnail gallerybox">
+          <img src="img/10.jpg" class="thumbnail gallerybox">
+        </div>
+      </section>
+      <section class="amber" id="part1">
+        <div class="wrapper">
+          <h1>Set up</h1>
+          <h2>1. Install via NPM</h2>
+          <p>
+            This is the easiest way to get Gallerybox. If you prefer, you can <a href="https://github.com/rcus/jquery-gallerybox/archive/master.zip">download the files from GitHub</a>.
+          </p>
+            <code>npm install jquery-gallerybox</code>
+          <h2>2. Include files in HTML</h2>
+          <p>
+            Add stylesheet with this line in your <code>&lt;header&gt;</code>-section:
+          </p>
+          <code>&lt;link rel="stylesheet" href="path/to/gallerybox.css"&gt;</code>
+          <p>
+            Add jQuery (if you haven't) and Gallerybox with these lines at the end of your document, just before the <code>&lt;/body&gt;</code>-tag:
+          </p>
+          <code>&lt;script src="//code.jquery.com/jquery-1.11.3.min.js"&gt;&lt;/script&gt;
+&lt;script src="path/to/jquery-gallerybox.js"&gt;&lt;/script&gt;</code>
+        </div>
+      </section>
+      <section class="green" id="part2">
+        <div class="wrapper">
+          <h1>Usage</h1>
+          <h2>1. Select images</h2>
+          <p>
+            For each image you want to add to the Gallerybox, just add a class. How about <code>gbox</code>?
+          </p>
+          <code>&lt;img src="image1.jpg" class="gbox"&gt;
+&lt;img src="image2.jpg" class="gbox"&gt;
+...</code>
+          <h2>2. Attach with plugin</h2>
+          <p>
+            Bind images with jQuery:
+          </p>
+          <code>&lt;script&gt;
+  $('.gbox').gallerybox();
+&lt;/script&gt;</code>
+        </div>
+      </section>
+      <section class="teal" id="part3">
+        <div class="wrapper">
+          <h1>Settings</h1>
+          <p>
+            You can use your own settings, just add them when you bind images with jQuery:
+          </p>
+          <code>&lt;script&gt;
+  $('.gbox').gallerybox({
+    bgColor: 'blue',
+    bgOpacity: 0.5,
+    closeText: 'EXIT'
+  });
+&lt;/script&gt;</code>
+          <table>
+            <thead>
+              <tr>
+                <th>Option</th>
+                <th>Default</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>bgColor</td>
+                <td>#000</td>
+                <td>
+                  Set backgroundcolor for gallerybox. Use values like '#001f00', 'darkgrey' or 'rgb(21, 21, 14)'.
+                </td>
+              </tr>
+              <tr>
+                <td>bgOpacity</td>
+                <td>0.95</td>
+                <td>
+                  Let you adjust the transparency of the backgroundcolor. Use values from 0 to 1.
+                </td>
+              </tr>
+              <tr>
+                <td>closeText</td>
+                <td>CLOSE</td>
+                <td>
+                  Use your own text in the top-right corner.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section class="red" id="part4">
+        <div class="wrapper">
+          <h1>About</h1>
+          <h2>Why Gallerybox?</h2>
+          <p>
+            Well, Gallerybox isn't the first lightbox jQuery plugin. And it ain't gonna be the last one either. There are some good plugins, like <a href="http://lokeshdhakar.com/projects/lightbox2/">Lightbox</a>, <a href="http://fancyapps.com/fancybox/">Fancybox</a>, <a href="http://sachinchoolur.github.io/lightGallery/">lightGallery</a> and <a href="http://www.jacklmoore.com/colorbox/">Colorbox</a>. Heck, that's a lot of good lightboxes... But listen to this:
+            <ul>
+              <li>Gallerybox's main function is to display all the images in the gallery at the bottom of the page, while the selected image is displayed in large format.</li>
+              <li>Gallerybox is simple and easy to use.</li>
+              <li>Gallerybox is customizable.</li>
+              <li>Gallerybox is a lightweight plugin, less than 5K with CSS.</li>
+              <li>Gallerybox have the future ahead of it, more will come.</li>
+              <li>Gallerybox is made with ♥.</li>
+            </ul>
+          </p>
+          <p>
+            jQuery Gallerybox <a href="https://github.com/rcus/jquery-gallerybox">on GitHub</a>.
+          </p>
+        </div>
+      </section>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="jquery-gallerybox/jquery.gallerybox.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
