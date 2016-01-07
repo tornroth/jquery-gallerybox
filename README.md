@@ -1,5 +1,7 @@
 # jQuery Gallerybox
 
+Demo: https://rcus.github.io/jquery-gallerybox/
+
 ## Set up
 ### 1. Install via NPM
 This is the easiest way to get Gallerybox.
