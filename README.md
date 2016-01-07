@@ -8,43 +8,43 @@ npm install jquery-gallerybox
 ```
 
 ### 2. Include files in HTML
-Add stylesheet with this line in your `&lt;header&gt;`-section:
+Add stylesheet with this line in your `<header>`-section:
 ```
-&lt;link rel="stylesheet" href="path/to/gallerybox.css"&gt;
+<link rel="stylesheet" href="path/to/gallerybox.css">
 ```
-Add jQuery (if you haven't) and Gallerybox with these lines at the end of your document, just before the `&lt;/body&gt;`-tag:
+Add jQuery (if you haven't) and Gallerybox with these lines at the end of your document, just before the `</body>`-tag:
 ```
-&lt;script src="//code.jquery.com/jquery-1.11.3.min.js"&gt;&lt;/script&gt;
-&lt;script src="path/to/jquery-gallerybox.js"&gt;&lt;/script&gt;
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="path/to/jquery-gallerybox.js"></script>
 ```
 
 ## Usage
 ### 1. Select images
 For each image you want to add to the Gallerybox, just add a class. How about `gbox`?
 ```
-&lt;img src="image1.jpg" class="gbox"&gt;
-&lt;img src="image2.jpg" class="gbox"&gt;
+<img src="image1.jpg" class="gbox">
+<img src="image2.jpg" class="gbox">
 ...
 ```
 
 ### 2. Attach with plugin
 Bind images with jQuery:
 ```
-&lt;script&gt;
+<script>
   $('.gbox').gallerybox();
-&lt;/script&gt;
+</script>
 ```
 
 ## Settings
 You can use your own settings, just add them when you bind images with jQuery:
 ```
-&lt;script&gt;
+<script>
   $('.gbox').gallerybox({
     bgColor: 'blue',
     bgOpacity: 0.5,
     closeText: 'EXIT'
   });
-&lt;/script&gt;
+</script>
 ```
 
 | Option    | Default | Description |
