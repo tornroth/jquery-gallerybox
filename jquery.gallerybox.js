@@ -1,128 +1,133 @@
 (function ($) {
   $.fn.gallerybox = function(options) {
-    var settings = $.extend({
-      backgroundColor: '#000',
-      opacity: 0.95,
-      closeText: 'CLOSE'
-    }, options );
+    var
+      defaults = {
+        bgColor: '#000',
+        bgOpacity: 0.95,
+        closeText: 'CLOSE'
+      },
+      settings = $.extend({}, defaults, options),
+      images = this,
 
-    var init = function() {
-      // Create #gallerybox element
-      $('<div id="gallerybox"></div>')
-        .appendTo('body');
+      // Open gallerybox
+      open = function(img) {
+        // Create #gallerybox element
+        $('<div id="gallerybox"></div>')
+          .appendTo('body');
 
-      // Create span element for closing GalleryBox
-      $('<span>' + settings.closeText + '</span>')
-        .delay('fast')
-        .fadeIn()
-        .appendTo('#gallerybox');
+        // Create span element for closing GalleryBox
+        $('<span>' + settings.closeText + '</span>')
+          .delay('fast')
+          .fadeIn()
+          .appendTo('#gallerybox')
+          .click(close);
 
-      // Create #gb-overlay element
-      $('<div id="gb-overlay"></div>')
-        .css({
-          backgroundColor: settings.backgroundColor,
-          opacity: 0
-        })
-        .appendTo('#gallerybox')
-        .animate({'opacity' : settings.opacity}, 'slow');
+        // Create #gb-overlay element
+        $('<div id="gb-overlay"></div>')
+          .css({
+            backgroundColor: settings.bgColor,
+            opacity: 0
+          })
+          .appendTo('#gallerybox')
+          .animate({
+            'opacity' : settings.bgOpacity
+          }, 'slow');
 
-      // Create #gb-big element
-      $('<div id="gb-big"></div>')
-        .hide()
-        .appendTo('#gallerybox');
+        // Create #gb-big element
+        $('<div id="gb-big"></div>')
+          .delay()
+          .appendTo('#gallerybox');
 
-      // Create #gb-list element
-      $('<div id="gb-list"></div>')
-        .appendTo('#gallerybox');
-    };
+        // Create #gb-list element
+        $('<div id="gb-list"></div>')
+          .appendTo('#gallerybox');
 
-    var loadBigImage = function(img) {
-      $('#gb-big')
-        .fadeOut(function() {
-          // Remove current image
-          $('#gb-big img')
-          .remove();
-
-          // Create new image element
+        // Load images in imagelist
+        $.each(images, function() {
           $('<img>')
-            .attr('src', $(img).attr('src'))
-            .css({
-              'max-height': ($(window).height() - 200) * 0.9, 
-              'max-width': $(window).width() * 0.9
-            })
+            .attr('src', $(this).attr('src'))
+            .hide()
             .load(function() {
-              $('#gb-big')
-                .css({
-                  'top': ($(window).height() - $('#gb-big').height() - 200) / 2,
-                  'left': ($(window).width() - $('#gb-big').width()) / 2
-                })
+              $(this)
+                .delay('fast')
                 .fadeIn();
             })
-            .appendTo('#gb-big');
+            .appendTo('#gb-list')
+            .click(function() {
+              loadImage(this);
+            });
         });
-    };
 
-    var loadListImages = function() {
-      var images = $('img.gallerybox').map(function(){
-        return this;
-      }).get();
-      $.each(images, function() {
-        $('<img>')
-          .attr('src', $(this).attr('src'))
+        // Create scrollbuttons
+        $('<div class="left">&lt;</div><div class="right">&gt;</div>')
           .hide()
-          .load(function() {
-            $(this)
-              .delay('fast')
-              .fadeIn();
-          })
-          .appendTo('#gb-list');
-      });
+          .delay('slow')
+          .fadeIn()
+          .appendTo('#gb-list')
+          .click(function() {
+            scrollList(this);
+          });
 
-      // Create scrollbuttons if needed
-      $('<div class="left">&lt;</div><div class="right">&gt;</div>')
-        .hide()
-        .delay('slow')
-        .fadeIn()
-        .appendTo('#gb-list');
-    };
+        // Load big image
+        if (img) {
+          loadImage(img);
+        }
+      },
 
-    var scrollList = function(elem) {
-      direction = $(elem).hasClass('left') ? -1 : 1;
-      var pos = $('#gb-list').scrollLeft(),
-        newPos = pos + direction * $(window).width() * 0.9,
-        lastPos = $('#gb-list')[0].scrollWidth - $(window).width();
-      newPos = direction === -1 ? (newPos < 0 ? 0 : newPos) : (newPos > lastPos ? lastPos : newPos);
-      if (pos !== newPos) {
-        $('#gb-list').animate({
-          scrollLeft: newPos
-        }, 1000);
-      }
-    };
+      // Close gallerybox
+      close = function() {
+        $('#gallerybox').fadeOut('slow', function() {
+          $(this).remove();
+        });
+      },
 
-    init();
-    loadBigImage(this);
-    loadListImages();
+      loadImage = function(img) {
+        $('#gb-big')
+          .fadeOut(function() {
+            // Remove current image
+            $('#gb-big img')
+            .remove();
 
-    // Show image from list
-    $('#gb-list img').click(function() {
-      console.log(this);
-      loadBigImage(this);
-    });
+            // Create new image element
+            $('<img>')
+              .attr('src', $(img).attr('src'))
+              .css({
+                'max-height': ($(window).height() - 150) * 0.9, 
+                'max-width': $(window).width() * 0.9
+              })
+              .load(function() {
+                $('#gb-big')
+                  .css({
+                    'top': ($(window).height() - $('#gb-big').height() - 150) / 2,
+                    'left': ($(window).width() - $('#gb-big').width()) / 2
+                  })
+                  .fadeIn();
+              })
+              .appendTo('#gb-big');
+          });
+      },
 
-    // Scroll imagelist
-    $('#gb-list div').click(function() {
-      scrollList(this);
-    });
+      scrollList = function(elem) {
+        var
+          dir = $(elem).hasClass('left') ? -1 : 1,
+          curPos = $('#gb-list').scrollLeft(),
+          newPos = curPos + dir * $(window).width() * 0.9,
+          endPos = $('#gb-list')[0].scrollWidth - $(window).width(),
+          moveTo = dir === -1 ? (newPos > 0 ? newPos : 0) : (newPos < endPos ? newPos : endPos);
 
-    // Close gallerybox on click
-    $('#gallerybox span').click(function() {
-      $('#gallerybox').fadeOut('slow', function() {
-        $(this).remove();
-      });
+        if (curPos !== moveTo) {
+          $('#gb-list').animate({
+            scrollLeft: moveTo
+          }, 1000);
+        }
+      };
+
+    // Change cursor to pointer
+    images.css('cursor', 'pointer');
+
+    // On image click
+    images.click(function() {
+      open(this);
     });
   };
 }(jQuery));
-
-$('img.gallerybox').click(function() {
-  $(this).gallerybox();
-});

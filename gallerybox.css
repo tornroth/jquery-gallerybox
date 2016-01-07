@@ -33,7 +33,7 @@
 #gb-list {
   position: absolute;
   width: 100%;
-  height: 200px;
+  height: 150px;
   box-sizing: border-box;
   left: 0;
   bottom: 0;
@@ -52,9 +52,9 @@
 #gb-list > .right {
   position: fixed;
   width: 20px;
-  height: 200px;
+  height: 150px;
   bottom: 0;
-  line-height: 200px;
+  line-height: 150px;
   font-family: Helvetica, Verdana, Arial, sans-serif;
   font-weight: 600;
   color: #ccc;
@@ -73,9 +73,5 @@
   vertical-align: middle;
   margin: 0 1em;
   max-height: 75%;
-  cursor: pointer;
-}
-
-img.gallerybox {
   cursor: pointer;
 }
