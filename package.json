@@ -1,6 +1,6 @@
 {
   "name": "jquery-gallerybox",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "jQuery plugin to show a gallery in a lightbox.",
   "main": "jquery.gallerybox.js",
   "repository": {
